@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
     def create
         @user = User.find_or_create_by(user_params)
-        binding.pry
 
         redirect_to users_path
 
