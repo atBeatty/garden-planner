@@ -31,7 +31,7 @@ class GardensController < ApplicationController
     end
 
     def destroy
-
+        
     end
 
     private

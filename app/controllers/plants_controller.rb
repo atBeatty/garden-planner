@@ -31,14 +31,19 @@ class PlantsController < ApplicationController
     
 
     def create
-        @plant = Plant.create(plant_params)
-        redirect_to plants_path
+        @plant = Plant.new(plant_params)
+        @plant.user_id = current_user.id
+        if @plant.save
+          redirect_to plants_path
+        else
+          render new_plant_path
+        end
     end
 
 
     private
     def plant_params
-        params.require(:plant).permit(:name, :species)
+        params.require(:plant).permit(:name, :species, :user_id, :garden_id)
     end
 
 
