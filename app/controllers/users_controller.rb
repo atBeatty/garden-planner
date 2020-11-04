@@ -9,16 +9,12 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
-        
-        redirect_to redirect_to user_path(@user)
+        redirect_to user_path(@user)
     end
 
     def show
-        if !logged_in?
-            redirect_to '/'
-        else
-            @user = User.find(params[:id])
-        end
+        redirect_if_not_logged_in
+        @user = User.find(params[:id])
     end
 
 

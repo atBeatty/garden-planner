@@ -10,10 +10,16 @@
   </head>
 
   <body>
+  <nav>
+  <%= link_to "home", '/' %>
+  <%= link_to "plants", plants_path %>
+  <%= link_to "gardens", '/' %>
+  <%= link_to "my greenhouse", '/' %>
+  <%= link_to "about", '/' %>
+
+  </nav>
   <% flash.each do |type, msg| %>
-    <div>
-      <%= msg %>
-    </div>
+  <%= msg %>
   <% end %>
   <%= yield %>
   </body>
@@ -22,7 +28,7 @@
   <% if session[:user_id] %>
     
     <%= User.find_by(id: session[:user_id]).email %>
-    <%= link_to "logout", '/logout' %>
+    <%= link_to "Log Out", '/logout', method: :delete %>
     <% end %>
   
   </footer>
