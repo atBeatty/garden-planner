@@ -8,11 +8,19 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.find_or_create_by(user_params)
-
-        redirect_to users_path
-
+        @user = User.create(user_params)
+        
+        redirect_to redirect_to user_path(@user)
     end
+
+    def show
+        if !logged_in?
+            redirect_to '/'
+        else
+            @user = User.find(params[:id])
+        end
+    end
+
 
     private
     def user_params
