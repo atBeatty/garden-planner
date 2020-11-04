@@ -13,8 +13,10 @@
   <nav>
   <%= link_to "home", '/' %>
   <%= link_to "plants", plants_path %>
-  <%= link_to "gardens", '/' %>
-  <%= link_to "my greenhouse", '/' %>
+  <%= link_to "gardens", gardens_path %>
+  <% if session[:user_id] %>
+    <%= link_to "my greenhouse", '/' %>
+  <% end %>
   <%= link_to "about", '/' %>
 
   </nav>

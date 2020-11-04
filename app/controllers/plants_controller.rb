@@ -4,6 +4,7 @@ class PlantsController < ApplicationController
     end
 
     def index
+        redirect_if_not_logged_in
         @plants = Plant.all
     end
 
