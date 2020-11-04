@@ -4,6 +4,7 @@ class PlantsController < ApplicationController
     end
 
     def index
+        redirect_if_not_logged_in
         if params[:user_id]
           @user = User.find_by(id: params[:user_id])
           if @user.nil?
@@ -18,13 +19,13 @@ class PlantsController < ApplicationController
     
       def show
         if params[:user_id]
-          @user = User.find_by(id: params[:user_id])
+          @user = User.find_by_id(params[:user_id])
           @plant = @user.plants.find_by(id: params[:id])
           if @plant.nil?
             redirect_to user_plants_path(@user), alert: "Plant not found"
           end
         else
-          @plant = plant.find(params[:id])
+          @plant = Plant.find(params[:id])
         end
       end
     
