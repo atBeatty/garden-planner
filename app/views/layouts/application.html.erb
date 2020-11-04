@@ -15,7 +15,7 @@
   <%= link_to "plants", plants_path %>
   <%= link_to "gardens", gardens_path %>
   <% if session[:user_id] %>
-    <%= link_to "my greenhouse", '/' %>
+    <%= link_to "my greenhouse", user_path(User.find(session[:user_id])) %>
   <% end %>
   <%= link_to "about", '/' %>
 

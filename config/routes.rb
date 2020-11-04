@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   resources :plants
   resources :gardens
 
-  # resources :users do
-  #   resources :plants 
-  # end
+  resources :users do
+    resources :plants, only: [:index, :new]
+  end
 
 
   get "/signup", to: "users#new"

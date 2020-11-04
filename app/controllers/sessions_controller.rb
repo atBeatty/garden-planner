@@ -3,10 +3,12 @@ require 'pry'
 
 class SessionsController < ApplicationController
     def new
+        redirect_if_logged_in
         @user = User.new
     end
 
     def create
+
         @user = User.find_by(email: params[:email])
         if @user[:password] != params[:password]
             render 'sessions/new'
