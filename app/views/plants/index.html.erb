@@ -1,0 +1,6 @@
+<h1>Plants Index</h1>
+
+<% @plants.each do |plant| %>
+    <%= link_to plant.name, plant_path(plant) %>
+    
+<% end %>

@@ -1,7 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+Plant.create(name:'Gasteria', species:'Gasteria Sp.', user_id: 1)
+Plant.create(name:'Haworthia', species:'Haworthia species', user_id: 1, garden_id: 1)
+Plant.create(name:'Hoya Kerrii', species:'Hoya kerrii', user_id: 1, garden_id: 1)
+Plant.create(name:'Jade Plant', species:'Crassula ovata', user_id: 1, garden_id: 1)
+Plant.create(name:'Living Stones', species:'Lithops species', user_id: 1, garden_id: 1)
+Plant.create(name:'Madagascar Palm', species:'Pachypodium lamerei', user_id: 1, garden_id: 1)
+Plant.create(name:'Mistletoe Cactus', species:'Rhipsalis baccifera', user_id: 1, garden_id: 1)
+Plant.create(name:'Mother-in-Law’s Tongue or Snake Plant', species:'Sansevieria trifasciata', user_id: 1, garden_id: 1)
+Plant.create(name:'Mother of Thousands', species:'Kalanchoe daigremontiana', user_id: 1, garden_id: 1)
+Plant.create(name:'Orchid Cactus', species:'Epiphyllum species and hybrids', user_id: 1, garden_id: 1)
+Plant.create(name:'Paddle Plant', species:'Kalanchoe thyrsiflora', user_id: 1, garden_id: 1)
+Plant.create(name:'Panda Plant', species:'Kalanchoe tomentosa', user_id: 1, garden_id: 1)
+Plant.create(name:'Ponytail Palm', species:'Beaucarnea recurvata', user_id: 1, garden_id: 1)
+Plant.create(name:'String of Pearls', species:'Senecio rowleyanus', user_id: 1, garden_id: 1)
+Plant.create(name:'Sedum rubrotinctum or Jelly Bean Plant', species:'Sedum rubrotinctum', user_id: 1, garden_id: 1)
+Plant.create(name:'Thanksgiving Cactus', species:'Schlumbergera truncata', user_id: 1, garden_id: 1)
+Plant.create(name:'Tiger’s Jaw', species:'Faucaria tigrina', user_id: 1, garden_id: 1)
+Plant.create(name:'Yucca', species:'Yucca elephantipes', user_id: 1, garden_id: 1)
