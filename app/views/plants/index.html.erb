@@ -2,5 +2,5 @@
 
 <% @plants.each do |plant| %>
     <p><%= link_to plant.user.first_name, user_path(plant.user) %></p>
-    <p><%= link_to plant.name, user_plant_path(plant.user, plant) %></p>
+    <p><%= link_to plant.name, plant_path(plant) %></p>
 <% end %>

@@ -1,25 +1,31 @@
 class GardensController < ApplicationController
 
 
+    def new
+        
+        @garden = Garden.new
+    end
 
     def index
         @gardens = Garden.all
     end
 
-    def new
-        @garden = Garden.new
-    end
 
     def show
         @garden = Garden.find_by_id(params[:id])
-        
     end
 
 
     def create
+       
         @garden = Garden.new(garden_params)
-        @garden.save
-        redirect_to garden_path(@garden)
+        @garden.user_id = current_user.id
+        if @garden.save
+            redirect_to user_garden_path(@user)
+        else
+            render new_user_garden_path
+        end
+
     end
 
     def edit
@@ -28,6 +34,7 @@ class GardensController < ApplicationController
 
     def update
         @garden.update(garden_params)
+        redirect_to garden_path(@garden)
     end
 
     def destroy
@@ -36,7 +43,7 @@ class GardensController < ApplicationController
 
     private
     def garden_params
-        params.require(:garden).permit(:name, :location)
+        params.require(:garden).permit(:name, :location, :user_id)
     end
 
 

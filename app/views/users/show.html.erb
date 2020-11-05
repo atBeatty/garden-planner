@@ -1,9 +1,13 @@
 <h1><%= @user.first_name %></h1>
-<% @user.plants.each do |plant| %>
-<p><%= link_to plant.name, user_plant_path(@user, plant) %></p>
+<h2><%= link_to @user.gardens.count, user_gardens_path(@user) %> Gardens</h2>
+<h2><%= link_to @user.plants.count, user_plants_path(@user) %> Plants</h2>
+
+<%# This will display the User's GARDENS %>
+<h3>Gardens</h3>
+<% @user.gardens.each do |garden| %>
+    <%= garden.name %>
 <% end %>
-
-
 
 <%= link_to "Log Out", '/logout', method: :delete %>
 <%= link_to "Add Plant", new_user_plant_path(@user) %>
+<%= link_to "Add Garden", new_user_garden_path(@user) %>

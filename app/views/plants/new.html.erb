@@ -1,9 +1,14 @@
-
-
+<h1>Add Plant</h1>
 <%= form_for @plant do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <%= f.label :species %>
     <%= f.text_field :species %>
+
+    
+    
+    
     <%= f.submit %>
 <% end %>
+
+collection_select(:post, :author_id, Author.all, :id, :name_with_initial, {:selected => "whatever_value"})
