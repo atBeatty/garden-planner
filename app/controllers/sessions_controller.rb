@@ -10,7 +10,9 @@ class SessionsController < ApplicationController
     def create
 
         @user = User.find_by(email: params[:email])
-        if @user[:password] != params[:password]
+        if @user.nil?
+            redirect_to '/signup'
+        elsif @user[:password] != params[:password]
             render 'sessions/new'
         else
             session[:user_id] = @user.id

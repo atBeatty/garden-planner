@@ -1,10 +1,9 @@
 class GardensController < ApplicationController
-
+before_action :redirect_if_not_logged_in
 
     def index
         if params[:user_id]
         @user = User.find_by(id: params[:user_id])
-        
             if @user.nil?
                 redirect_to users_path, alert: "user not found"
             else
@@ -17,8 +16,6 @@ class GardensController < ApplicationController
 
     def new
         @garden = Garden.new
-        # @garden.plants.build
-
     end
 
     def show
@@ -33,7 +30,6 @@ class GardensController < ApplicationController
         else
             render new_user_garden_path
         end
-
     end
 
     def edit
@@ -56,6 +52,7 @@ class GardensController < ApplicationController
     end
 
     private
+    
     def garden_params
         params.require(:garden).permit(:name, :location, plants_attributes: [:name, :species, :garden_id])
     end
