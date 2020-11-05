@@ -1,4 +1,7 @@
 <h1>Garden Show Page</h1>
-<%= link_to "Add Plant", new_garden_plant_path(@garden) %>
-<h2><%= @garden.name %></h2>
-<h3><%= @garden.location %></h3>
+<%= link_to "Add Plant", edit_garden_path %>
+Name: <h2><%= @garden.name %></h2>
+Location: <h3><%= @garden.location %></h3>
+<% @garden.plants.each do |plant| %>
+    <%= plant.name %>
+<% end %>

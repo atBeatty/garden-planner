@@ -14,8 +14,8 @@
   <%= link_to "home", '/' %>
   <%= link_to "plants", plants_path %>
   <%= link_to "gardens", gardens_path %>
-  <% if session[:user_id] %>
-    <%= link_to "my greenhouse", user_path(User.find(session[:user_id])) %>
+  <% if logged_in? %>
+    <%= link_to "my greenhouse", user_path(current_user) %>
     <%= current_user.email %>
   <% end %>
   <%= link_to "about", '/' %>

@@ -3,7 +3,7 @@ before_action :redirect_if_not_logged_in
 
     def new
       @plant = Plant.new
-      @user
+  
     end
 
     def index
@@ -36,7 +36,7 @@ before_action :redirect_if_not_logged_in
         @plant = Plant.new(plant_params)
         @plant.user_id = current_user.id
         if @plant.save
-          redirect_to plants_path
+          redirect_to @plant
         else
           render new_plant_path
         end
