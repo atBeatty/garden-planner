@@ -51,6 +51,13 @@ before_action :redirect_if_not_logged_in
       redirect_to plants_path
     end
 
+    def destroy
+      @plant = Plant.find_by_id(params[:id])
+
+      @plant.destroy
+      redirect_to plants_path
+    end
+
 
 
 
