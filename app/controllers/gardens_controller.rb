@@ -38,11 +38,14 @@ class GardensController < ApplicationController
 
     def edit
         @garden = Garden.find_by_id(params[:id])
-        @user_flowers = current_user.plants
+        @user_plants = current_user.plants
     end
-
+    
     def update
         @garden = Garden.find_by_id(params[:id])
+        @plant = Plant.find_by(name: params[:garden][:plants][:name])
+        @garden << @plant
+        # binding.pry
         @garden.update(garden_params)
         redirect_to garden_path(@garden)
     end
@@ -54,7 +57,7 @@ class GardensController < ApplicationController
 
     private
     def garden_params
-        params.require(:garden).permit(:name, :location, plant_attributes: [:name, :species, :id])
+        params.require(:garden).permit(:name, :location, plants_attributes: [:name, :species, :garden_id])
     end
 
 
