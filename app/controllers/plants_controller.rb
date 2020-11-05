@@ -7,17 +7,17 @@ before_action :redirect_if_not_logged_in
     end
 
     def index
-        if params[:user_id]
-          @user = User.find_by(id: params[:user_id])
-          if @user.nil?
-            redirect_to users_path, alert: "user not found"
-          else
-            @plants = @user.plants
-          end
+      if params[:user_id]
+        @user = User.find_by(id: params[:user_id])
+        if @user.nil?
+          redirect_to users_path, alert: "user not found"
         else
-          @plants = Plant.all
+          @plants = @user.plants
         end
+      else
+        @plants = Plant.all
       end
+    end
     
       def show
         if params[:user_id]

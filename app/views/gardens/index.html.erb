@@ -1,7 +1,7 @@
 <ul>
 <% @gardens.each do |garden| %>
     <%= garden.location %>
-    <%=  current_user.email %>
+    <%=  garden.users.count %>
     <li><%= link_to garden.name, garden_path(garden) %></li>
 
 <% end %></ul>

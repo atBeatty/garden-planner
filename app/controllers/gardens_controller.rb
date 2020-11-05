@@ -2,13 +2,21 @@ class GardensController < ApplicationController
 
 
     def new
-        @user = current_user
+        @user
         @garden = Garden.new
     end
 
     def index
-        binding.pry
+    if params[:user_id]
+    @user = User.find_by(id: params[:user_id])
+        if @user.nil?
+            redirect_to users_path, alert: "user not found"
+        else
+            @gardens = @user.gardens
+        end
+    else
         @gardens = Garden.all
+    end
     end
 
 
@@ -19,8 +27,11 @@ class GardensController < ApplicationController
 
     def create
        
-        @garden = current_user.gardens.build(garden_params)
+        # @garden = current_user.gardens.build(garden_params)
         binding.pry
+        @garden = Garden.create(garden_params)
+        @garden.users << current_user
+        
         if @garden.save
             redirect_to garden_path(@garden)
         else
