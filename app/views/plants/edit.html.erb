@@ -1,0 +1,13 @@
+<h1>Edit Plant</h1>
+<%= form_for @plant do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :species %>
+    <%= f.text_field :species %>
+    <%# <%= f.collection_select :plant, :garden_id, Garden.all, :name %>
+
+    
+    
+    
+    <%= f.submit %>
+<% end %>

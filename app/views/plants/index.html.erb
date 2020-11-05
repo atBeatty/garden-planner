@@ -1,6 +1,6 @@
 <h1>Plants Index</h1>
 
 <% @plants.each do |plant| %>
-    <p><%= link_to plant.user.first_name, user_path(plant.user) %></p>
-    <p><%= link_to plant.name, plant_path(plant) %></p>
+    <h3><%= link_to plant.name, plant_path(plant) %></h3>
+    <%= link_to plant.user.first_name, user_path(plant.user) %>
 <% end %>

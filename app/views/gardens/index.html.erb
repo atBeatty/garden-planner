@@ -1,6 +1,7 @@
 <ul>
 <% @gardens.each do |garden| %>
     <%= garden.location %>
+    <%=  current_user.email %>
     <li><%= link_to garden.name, garden_path(garden) %></li>
 
 <% end %></ul>

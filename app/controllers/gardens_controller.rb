@@ -2,11 +2,12 @@ class GardensController < ApplicationController
 
 
     def new
-        
+        @user = current_user
         @garden = Garden.new
     end
 
     def index
+        binding.pry
         @gardens = Garden.all
     end
 
@@ -18,10 +19,10 @@ class GardensController < ApplicationController
 
     def create
        
-        @garden = Garden.new(garden_params)
-        @garden.user_id = current_user.id
+        @garden = current_user.gardens.build(garden_params)
+        binding.pry
         if @garden.save
-            redirect_to user_garden_path(@user)
+            redirect_to garden_path(@garden)
         else
             render new_user_garden_path
         end
@@ -38,7 +39,8 @@ class GardensController < ApplicationController
     end
 
     def destroy
-        
+        @garden.destroy
+        redirect_to gardens_path
     end
 
     private

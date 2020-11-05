@@ -1,13 +1,12 @@
 class PlantsController < ApplicationController
-
+before_action :redirect_if_not_logged_in
 
     def new
-        @plant = Plant.new
-       
+      @plant = Plant.new
+      @user
     end
 
     def index
-        redirect_if_not_logged_in
         if params[:user_id]
           @user = User.find_by(id: params[:user_id])
           if @user.nil?
@@ -42,6 +41,17 @@ class PlantsController < ApplicationController
           render new_plant_path
         end
     end
+
+    def edit
+      @plant = Plant.find_by_id(params[:id])
+    end
+
+    def update
+      @plant = Plant.update(plant_params)
+      redirect_to plants_path
+    end
+
+
 
 
     private
