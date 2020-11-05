@@ -19,13 +19,9 @@ class GardensController < ApplicationController
         @garden = Garden.new
     end
 
-
-
     def show
-
         @garden = Garden.find_by_id(params[:id])
     end
-
 
     def create
         @garden = Garden.create(garden_params)
@@ -41,6 +37,7 @@ class GardensController < ApplicationController
 
     def edit
         @garden = Garden.find_by_id(params[:id])
+        @user_flowers = current_user.plants
     end
 
     def update

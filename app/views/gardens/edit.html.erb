@@ -1,1 +1,11 @@
 <%= render "form" %>
+
+hello
+<%= current_user.plants %>
+<%= form_for @garden do |f| %>
+    <%= f.fields_for :plants do |plant_field| %>
+        <%= plant_field.label :name %>
+        <%= plant_field.text_field :name %>
+    <% end %>
+<%= f.submit %>
+<% end %>
