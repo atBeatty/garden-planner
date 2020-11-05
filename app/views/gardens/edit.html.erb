@@ -1,7 +1,9 @@
 <%= render "form" %>
 
 hello
-<%= current_user.plants %>
+<% current_user.plants.each do |users_plant| %>
+    <%= users_plant.name %>
+<% end %>
 <%= form_for @garden do |f| %>
     <%= f.fields_for :plants do |plant_field| %>
         <%= plant_field.label :name %>
