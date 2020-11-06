@@ -24,7 +24,8 @@ before_action :redirect_if_not_logged_in
     end
 
     def create
-        @garden = Garden.create(garden_params)
+        @garden = Garden.new(garden_params)
+
         @garden.users << current_user
         if @garden.save
             redirect_to garden_path(@garden)
@@ -42,12 +43,12 @@ before_action :redirect_if_not_logged_in
         @garden = Garden.find_by_id(params[:id])
         @plant = Plant.find_by(name: params[:garden][:plants_attributes][:name])
         @garden.plants << @plant
-        binding.pry
         @garden.update(garden_params)
         redirect_to garden_path(@garden)
     end
 
     def destroy
+        @garden = Garden.find_by_id(params[:id])
         @garden.destroy
         redirect_to gardens_path
     end

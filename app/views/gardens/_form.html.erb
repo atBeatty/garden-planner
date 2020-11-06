@@ -5,8 +5,5 @@
     <%= f.label :location %>
     <%= f.text_field :location %>
 
-    <%= f.fields_for @garden do |plant_fields| %>
-    <%= plant_fields.collection_select :garden, :plants, @user_plants, :id %>
-    <% end %>
     <%= f.submit %>
 <% end %>

@@ -1,7 +1,10 @@
+<h1>Gardens Index</h1>
+
 <ul>
 <% @gardens.each do |garden| %>
     <%= garden.location %>
     <%= garden.users.first.email unless garden.users.empty? %>
     <li><%= link_to garden.name, garden_path(garden) %></li>
+    <%= link_to "delete",  garden, method: :delete %>
 
 <% end %></ul>

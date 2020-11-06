@@ -6,7 +6,9 @@
     <%= f.text_field :species %>
 
     <%# <%= f.collection_select :plant, :garden_id, Garden.all, :name %>
-
+    <%= fields_for :garden, @plant.garden do |garden_field| %>
+        <%= garden_field.text_field :name %>
+    <% end %>
     <%= select_tag 'garden_id', options_for_select(Garden.all, "id") %>
     
     
