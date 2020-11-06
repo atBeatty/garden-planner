@@ -16,6 +16,7 @@ before_action :redirect_if_not_logged_in
 
     def new
         @garden = Garden.new
+        @user_plants = current_user.plants
     end
 
     def show
@@ -39,9 +40,9 @@ before_action :redirect_if_not_logged_in
     
     def update
         @garden = Garden.find_by_id(params[:id])
-        @plant = Plant.find_by(name: params[:garden][:plants][:name])
-        @garden << @plant
-        # binding.pry
+        @plant = Plant.find_by(name: params[:garden][:plants_attributes][:name])
+        @garden.plants << @plant
+        binding.pry
         @garden.update(garden_params)
         redirect_to garden_path(@garden)
     end
@@ -54,7 +55,7 @@ before_action :redirect_if_not_logged_in
     private
     
     def garden_params
-        params.require(:garden).permit(:name, :location, plants_attributes: [:name, :species, :garden_id])
+        params.require(:garden).permit(:name, :location)
     end
 
 

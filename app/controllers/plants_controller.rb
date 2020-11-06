@@ -47,6 +47,7 @@ before_action :redirect_if_not_logged_in
     end
 
     def update
+      
       @plant = Plant.update(plant_params)
       redirect_to plants_path
     end

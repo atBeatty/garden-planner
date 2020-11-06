@@ -4,6 +4,7 @@ hello
 <% current_user.plants.each do |users_plant| %>
     <%= users_plant.name %>
 <% end %>
+hello
 <%= form_for @garden do |f| %>
     <%= f.fields_for :plants do |plant_field| %>
         <%= plant_field.label :name %>

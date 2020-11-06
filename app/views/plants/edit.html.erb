@@ -4,9 +4,10 @@
     <%= f.text_field :name %>
     <%= f.label :species %>
     <%= f.text_field :species %>
+
     <%# <%= f.collection_select :plant, :garden_id, Garden.all, :name %>
 
-    
+    <%= select_tag 'garden_id', options_for_select(Garden.all, "id") %>
     
     
     <%= f.submit %>
