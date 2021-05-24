@@ -33,8 +33,7 @@ before_action :redirect_if_not_logged_in
     
 
     def create
-        @plant = Plant.new(plant_params)
-        @plant.user_id = current_user.id
+        @plant = current_user.plants.build(plant_params)
         if @plant.save
           redirect_to @plant
         else
@@ -44,10 +43,10 @@ before_action :redirect_if_not_logged_in
 
     def edit
       @plant = Plant.find_by_id(params[:id])
+      
     end
 
     def update
-      
       @plant = Plant.update(plant_params)
       redirect_to plants_path
     end
@@ -64,7 +63,7 @@ before_action :redirect_if_not_logged_in
 
     private
     def plant_params
-        params.require(:plant).permit(:name, :species, :user_id, :garden_id)
+        params.require(:plant).permit(:name, :species)
     end
 
 

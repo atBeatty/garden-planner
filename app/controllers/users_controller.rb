@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
-        redirect_to user_path(@user)
+        redirect_to plants_path
     end
 
     def show
