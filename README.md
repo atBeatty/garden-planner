@@ -9,22 +9,6 @@ This is a very small beginning to a simple CRUD application, built using Ruby on
 1. Start the rails server on your local machine by ` shotgun`.
 1. Open your browser and navigate to `
 
-Things you may want to cover:
+## Ruby Version 2.6.1
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.cd)
-
-* Deployment instructions
-
-* ...
